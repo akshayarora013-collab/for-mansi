@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff4f7">
+  <meta name="description" content="A little universe called us — a love letter for Mansi.">
+  <title>For Mansi, With All My Love ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #e58ca4; --rose-deep: #b64f73; --pink: #fff0f4;
+      --cream: #fffaf7; --lavender: #eee9ff; --ink: #533746;
+      --muted: #8e7180; --white: rgba(255,255,255,.78);
+      --shadow: 0 20px 60px rgba(153, 83, 111, .13);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink); font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(ellipse at 10% 5%, rgba(255,214,228,.78), transparent 34rem),
+        radial-gradient(ellipse at 90% 28%, rgba(224,218,255,.62), transparent 32rem),
+        linear-gradient(180deg, #fff7f8 0%, #fffaf7 48%, #f9f5ff 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content:""; position:fixed; inset:0; pointer-events:none; opacity:.18; z-index:-1;
+      background-image: radial-gradient(#c68aa0 .65px, transparent .65px);
+      background-size: 18px 18px;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .topbar { position:absolute; top:0; left:0; right:0; padding:22px clamp(18px,5vw,64px); display:flex; justify-content:space-between; align-items:center; z-index:5; }
+    .brand { font-family:"Playfair Display",serif; font-size:1.12rem; letter-spacing:.02em; }
+    .brand span { color:var(--rose-deep); }
+    .music-button { border:1px solid rgba(182,79,115,.2); background:rgba(255,255,255,.65); color:var(--rose-deep); border-radius:999px; padding:10px 15px; cursor:pointer; backdrop-filter:blur(12px); font-size:.84rem; }
+    .music-button:hover, .primary:hover, .ghost:hover { transform:translateY(-2px); }
+    .hero { min-height:100svh; display:grid; place-items:center; padding:110px 20px 70px; position:relative; text-align:center; }
+    .hero-inner { max-width:800px; position:relative; z-index:1; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.22em; font-size:.72rem; font-weight:700; color:var(--rose-deep); }
+    h1,h2,h3 { font-family:"Playfair Display",serif; font-weight:500; }
+    h1 { font-size:clamp(3.4rem,10vw,7.7rem); line-height:.98; letter-spacing:-.055em; margin:22px 0; }
+    h1 em { color:var(--rose-deep); font-weight:500; }
+    .hero-copy { font-size:clamp(1rem,2.4vw,1.22rem); line-height:1.8; max-width:560px; margin:0 auto; color:var(--muted); }
+    .hero-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:32px; }
+    .primary,.ghost { border-radius:999px; padding:14px 23px; cursor:pointer; transition:transform .2s, box-shadow .2s; text-decoration:none; display:inline-flex; align-items:center; gap:9px; }
+    .primary { color:white; border:0; background:linear-gradient(135deg,#d87998,#b64f73); box-shadow:0 10px 25px rgba(182,79,115,.22); }
+    .ghost { color:var(--rose-deep); border:1px solid rgba(182,79,115,.22); background:rgba(255,255,255,.56); }
+    .heart-orbit { width:190px; height:190px; margin:0 auto 15px; display:grid; place-items:center; position:relative; }
+    .heart-core { font-size:5.3rem; filter:drop-shadow(0 12px 18px rgba(182,79,115,.18)); animation:heartbeat 2.2s ease-in-out infinite; }
+    .orbit { position:absolute; inset:8px; border:1px solid rgba(182,79,115,.22); border-radius:50%; animation:spin 18s linear infinite; }
+    .orbit::before,.orbit::after { content:"✦"; position:absolute; color:#c78bbd; font-size:1.1rem; }
+    .orbit::before { top:12px; left:27px; } .orbit::after { bottom:18px; right:18px; }
+    .floating-heart { position:fixed; bottom:-50px; pointer-events:none; z-index:0; animation:floatUp linear forwards; opacity:.7; }
+    .section { padding:88px 20px; }
+    .section-inner { width:min(100%,1000px); margin:0 auto; }
+    .section-heading { text-align:center; margin-bottom:34px; }
+    .section-heading h2 { font-size:clamp(2.3rem,6vw,4rem); margin:12px 0; letter-spacing:-.035em; }
+    .section-heading p { color:var(--muted); line-height:1.7; margin:0 auto; max-width:540px; }
+    .letter-card { max-width:760px; margin:auto; padding:clamp(25px,5vw,55px); border:1px solid rgba(255,255,255,.95); border-radius:28px; background:rgba(255,255,255,.7); box-shadow:var(--shadow); backdrop-filter:blur(16px); position:relative; overflow:hidden; }
+    .letter-card::before { content:"♡"; position:absolute; right:22px; top:5px; font-family:serif; font-size:5rem; color:rgba(229,140,164,.14); }
+    .letter-card .salutation { font-family:"Playfair Display",serif; font-size:1.65rem; color:var(--rose-deep); margin-bottom:22px; }
+    .letter-text { font-size:1rem; line-height:2; white-space:pre-line; min-height:280px; position:relative; }
+    .letter-text .cursor { display:inline-block; width:2px; height:1.05em; background:var(--rose-deep); vertical-align:-.13em; animation:blink .8s steps(2) infinite; margin-left:2px; }
+    .letter-sign { text-align:right; margin-top:24px; color:var(--rose-deep); font-family:"Playfair Display",serif; font-style:italic; font-size:1.45rem; }
+    .center { text-align:center; }
+    .timer-wrap { border-radius:30px; padding:clamp(25px,5vw,48px); background:linear-gradient(135deg,rgba(255,235,242,.9),rgba(239,234,255,.9)); border:1px solid rgba(255,255,255,.9); box-shadow:var(--shadow); text-align:center; }
+    .timer-wrap h2 { font-size:clamp(2.2rem,6vw,3.5rem); margin:12px 0; }
+    .timer { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:28px auto 12px; max-width:650px; }
+    .time-box { background:rgba(255,255,255,.72); border:1px solid rgba(255,255,255,.95); border-radius:18px; padding:19px 8px; }
+    .time-number { display:block; font-size:clamp(1.7rem,5vw,3rem); color:var(--rose-deep); font-weight:700; font-variant-numeric:tabular-nums; }
+    .time-label { font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); }
+    .timer-note { color:var(--muted); font-size:.9rem; line-height:1.6; }
+    .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+    .photo { min-height:250px; aspect-ratio:4/5; border-radius:22px; overflow:hidden; position:relative; background:#f3dce7; box-shadow:0 12px 35px rgba(105,63,83,.1); }
+    .photo img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s; }
+    .photo:hover img { transform:scale(1.05); }
+    .photo::after { content:""; position:absolute; inset:45% 0 0; background:linear-gradient(transparent,rgba(42,22,35,.58)); pointer-events:none; }
+    .photo span { position:absolute; bottom:16px; left:16px; right:12px; z-index:1; color:white; font-family:"Playfair Display",serif; font-size:1.25rem; }
+    .gallery-note { text-align:center; color:var(--muted); font-size:.85rem; margin-top:16px; line-height:1.7; }
+    .surprise-box { max-width:680px; text-align:center; margin:auto; padding:clamp(28px,5vw,54px); border-radius:30px; background:rgba(255,255,255,.68); border:1px solid white; box-shadow:var(--shadow); }
+    .gift { font-size:3.5rem; display:inline-block; animation:giftWiggle 3s ease-in-out infinite; }
+    .surprise-box h2 { font-size:clamp(2.2rem,6vw,3.5rem); margin:12px 0; }
+    .secret-message { display:none; margin:26px auto 0; padding:24px; max-width:520px; border-radius:20px; background:linear-gradient(135deg,#fff0f5,#f1edff); line-height:1.9; animation:fadeIn .7s ease both; }
+    .secret-message.show { display:block; }
+    .secret-message strong { font-family:"Playfair Display",serif; font-size:1.5rem; color:var(--rose-deep); }
+    footer { text-align:center; padding:36px 20px 55px; color:var(--muted); font-size:.85rem; line-height:1.8; }
+    footer .footer-heart { color:var(--rose-deep); font-size:1.2rem; }
+    .small-note { font-size:.78rem; opacity:.8; }
+    @keyframes heartbeat { 0%,100%{transform:scale(1)} 10%{transform:scale(1.08)} 20%{transform:scale(1)} 32%{transform:scale(1.06)} 44%{transform:scale(1)} }
+    @keyframes spin { to{transform:rotate(360deg)} }
+    @keyframes floatUp { 0%{transform:translateY(0) rotate(0deg);opacity:0} 10%{opacity:.7} 90%{opacity:.55} 100%{transform:translateY(-115vh) rotate(35deg);opacity:0} }
+    @keyframes blink { to{visibility:hidden} }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes giftWiggle { 0%,85%,100%{transform:rotate(0)} 89%{transform:rotate(-8deg)} 93%{transform:rotate(8deg)} 97%{transform:rotate(-4deg)} }
+    @media (max-width:650px) {
+      .topbar { padding:16px; } .brand {font-size:1rem} .music-button {padding:9px 11px;font-size:.78rem}
+      .hero { min-height:92svh; padding-top:100px; } .heart-orbit {width:150px;height:150px} .heart-core{font-size:4.3rem}
+      .section {padding:64px 16px} .gallery {grid-template-columns:repeat(2,1fr);gap:10px}
+      .photo {min-height:190px;border-radius:17px} .photo:last-child {grid-column:1/-1;aspect-ratio:16/10}
+      .photo span {font-size:1.05rem;left:12px;bottom:12px}
+      .timer {gap:7px} .time-box {padding:15px 4px;border-radius:14px} .time-label {font-size:.59rem;letter-spacing:.06em}
+      .letter-text {font-size:.95rem;line-height:1.9}
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after {animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">a little universe <span>♡</span> us</div>
+    <button class="music-button" id="musicToggle" type="button" aria-label="Play romantic music">♫ <span id="musicLabel">Play our song</span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="heart-orbit" aria-hidden="true"><div class="orbit"></div><div class="heart-core">💗</div></div>
+        <div class="eyebrow">a tiny corner of the internet, just for you</div>
+        <h1>For you,<br><em>Mansi.</em></h1>
+        <p class="hero-copy">A little reminder that somewhere in this big, busy world, there's a heart that feels lucky every single day because it found you.</p>
+        <div class="hero-actions">
+          <a class="primary" href="#letter">Open my heart <span>♡</span></a>
+          <a class="ghost" href="#surprise">There's a surprise ✨</a>
+        </div>
+        <p class="small-note" style="margin-top:28px">made with love, and probably too many thoughts about you</p>
+      </div>
+    </section>
+
+    <section class="section" id="letter">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="eyebrow">things i want you to know</div>
+          <h2>A letter from my heart</h2>
+          <p>Some feelings deserve more than a text message. So here's a little space for mine.</p>
+        </div>
+        <article class="letter-card">
+          <div class="salutation">Baby, ❤️</div>
+          <div class="letter-text" id="typedLetter" aria-live="polite"></div>
+          <div class="letter-sign" id="letterSign" style="opacity:0">Always yours ♡</div>
+          <div class="center" style="margin-top:28px"><button class="ghost" id="replayTyping" type="button">Read it again ↻</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="countdown">
+      <div class="section-inner">
+        <div class="timer-wrap">
+          <div class="eyebrow">our next beautiful chapter</div>
+          <h2>Until forever begins…</h2>
+          <p style="color:var(--muted);margin:0">11 December 2026 · the day we begin our forever</p>
+          <div class="timer" aria-label="Countdown to our wedding">
+            <div class="time-box"><span class="time-number" id="days">--</span><span class="time-label">Days</span></div>
+            <div class="time-box"><span class="time-number" id="hours">--</span><span class="time-label">Hours</span></div>
+            <div class="time-box"><span class="time-number" id="minutes">--</span><span class="time-label">Minutes</span></div>
+            <div class="time-box"><span class="time-number" id="seconds">--</span><span class="time-label">Seconds</span></div>
+          </div>
+          <p class="timer-note" id="countdownNote">Every day brings us a little closer to our forever. ♡</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="memories">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="eyebrow">little moments, big feelings</div>
+          <h2>Our kind of magic</h2>
+          <p>One day, we'll look back at all these little moments and realise they were the big ones all along.</p>
+        </div>
+        <div class="gallery">
+          <figure class="photo"><img loading="lazy" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=900&q=85" alt="Romantic pink flowers" onerror="this.style.display='none'"><span>Little things, forever</span></figure>
+          <figure class="photo"><img loading="lazy" src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=900&q=85" alt="A couple holding hands" onerror="this.style.display='none'"><span>Hand in hand</span></figure>
+          <figure class="photo"><img loading="lazy" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=85" alt="Couple sharing a romantic moment" onerror="this.style.display='none'"><span>My favourite place</span></figure>
+        </div>
+        <p class="gallery-note">Make this truly ours: replace these sample photos with your own favourite memories.<br>See the README file for the easy 2-minute photo swap.</p>
+      </div>
+    </section>
+
+    <section class="section" id="surprise">
+      <div class="section-inner">
+        <div class="surprise-box">
+          <div class="gift" aria-hidden="true">🎁</div>
+          <div class="eyebrow">psst… one last thing</div>
+          <h2>For my favourite person</h2>
+          <p style="color:var(--muted);line-height:1.8;max-width:470px;margin:0 auto 24px">There's one more thing I want you to remember, especially on the days when life feels a little too much.</p>
+          <button class="primary" id="surpriseButton" type="button">Open your little surprise 💌</button>
+          <div class="secret-message" id="secretMessage">
+            <strong>It's always going to be you. ❤️</strong>
+            <p>For the big adventures and the ordinary Tuesdays. For mandir visits, long drives, random food plans, silly fights, making up, and laughing at things nobody else understands.</p>
+            <p>When the world gets loud, I hope my love feels like a soft place to land. You don't have to be perfect, have every answer, or be strong all the time with me. Just be you. That's the girl I fell for, and that's the girl I'll keep choosing.</p>
+            <p><b>You're my today, my tomorrow, and all the little days in between. 🧿</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-heart">♡</div>
+    made for Mansi, with all my love.<br>
+    <span class="small-note">No grand words can say it quite enough. But I'll keep trying.</span>
+  </footer>
+
+  <audio id="ourSong" preload="none" loop>
+    <source src="assets/soft-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const loveLetter = `Kabhi kabhi sochta hoon ki meri life mein tum aayi toh kitni saari cheezein apne aap khoobsurat ho gayi. Tumse baat karna, tumhe tang karna, tumhari smile dekhna, tumhari chhoti-chhoti baaton ka khayal rakhna… ab yeh sab meri life ka woh hissa ban gaya hai jiske bina main apna kal imagine bhi nahi kar sakta. 🥹❤️
+
+Main nahi jaanta ki main hamesha perfect rahunga ya nahi, but ek baat ka promise zaroor kar sakta hoon — main har din tumhe choose karna chahta hoon. Tumhare achhe dinon mein tumhari khushi banna hai, aur tumhare difficult days mein tumhara sukoon. Jab tum khud par doubt karo, toh main tumhe yaad dilana chahta hoon ki tum kitni special ho. Jab tum thak jao, toh tumhe lage ki duniya se ladna zaroori nahi, kyunki mere paas tum bas apni tarah reh sakti ho. 🫶🏻
+
+Mujhe tumhare saath sirf khoobsurat moments nahi jeene, mujhe tumhare saath ek poori zindagi jeeni hai — chhoti-chhoti nok-jhok, random dates, long drives, travelling, saath mein mandir jaana, bina kisi reason ke hasna, aur buddhe hone tak ek doosre ko pareshan karna. 😂❤️
+
+Pata hai, mere liye love ka matlab sirf “I love you” kehna nahi hai. Love ka matlab hai har din tumhe yeh feel karwana ki tum important ho, tumhari feelings matter karti hain, aur tumhe kabhi apni jagah ke liye ladna nahi padega.
+
+Tum meri favourite person hi nahi, woh insaan ho jiske saath main apna ghar, apna sukoon aur apni poori duniya banana chahta hoon. ❤️
+
+I love you, meri jaan. Aaj bhi, kal bhi, aur un saare dinon mein bhi jo humne abhi saath jeene hain. 🧿❤️😘`;
+
+    const typed = document.getElementById("typedLetter");
+    const sign = document.getElementById("letterSign");
+    let typingTimer = null;
+    function typeLetter() {
+      clearInterval(typingTimer);
+      typed.textContent = "";
+      sign.style.opacity = "0";
+      let i = 0;
+      const cursor = document.createElement("span");
+      cursor.className = "cursor";
+      typed.appendChild(cursor);
+      typingTimer = setInterval(() => {
+        if (i >= loveLetter.length) {
+          clearInterval(typingTimer);
+          cursor.remove();
+          sign.style.opacity = "1";
+          return;
+        }
+        cursor.insertAdjacentText("beforebegin", loveLetter[i]);
+        i++;
+      }, 19);
+    }
+    typeLetter();
+    document.getElementById("replayTyping").addEventListener("click", typeLetter);
+
+    const weddingDate = new Date("2026-12-11T20:00:00+05:30");
+    const pad = n => String(n).padStart(2, "0");
+    function updateCountdown() {
+      const diff = weddingDate.getTime() - Date.now();
+      if (diff <= 0) {
+        ["days","hours","minutes","seconds"].forEach(id => document.getElementById(id).textContent = "00");
+        document.getElementById("countdownNote").textContent = "Our forever is here. Here's to every beautiful day ahead. ❤️";
+        return;
+      }
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = pad(hours);
+      document.getElementById("minutes").textContent = pad(minutes);
+      document.getElementById("seconds").textContent = pad(seconds);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    document.getElementById("surpriseButton").addEventListener("click", () => {
+      const message = document.getElementById("secretMessage");
+      const open = message.classList.toggle("show");
+      document.getElementById("surpriseButton").textContent = open ? "A little more love ♡" : "Open your little surprise 💌";
+      if (open) {
+        for (let i = 0; i < 18; i++) setTimeout(createHeart, i * 70);
+      }
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      const symbols = ["♡","♥","✧","💗","💕"];
+      heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (14 + Math.random() * 20) + "px";
+      heart.style.color = ["#d87998","#bd8bc8","#e9a1b7","#ad9adf"][Math.floor(Math.random()*4)];
+      heart.style.animationDuration = (5 + Math.random() * 6) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 12000);
+    }
+    setInterval(createHeart, 950);
+
+    const audio = document.getElementById("ourSong");
+    const musicToggle = document.getElementById("musicToggle");
+    const musicLabel = document.getElementById("musicLabel");
+    musicToggle.addEventListener("click", async () => {
+      if (audio.paused) {
+        try {
+          await audio.play();
+          musicLabel.textContent = "Pause our song";
+          musicToggle.setAttribute("aria-label", "Pause romantic music");
+        } catch (e) {
+          alert("Add your music file first: upload an MP3 named soft-romantic.mp3 into the assets folder. Then refresh the page and tap Play our song.");
+        }
+      } else {
+        audio.pause();
+        musicLabel.textContent = "Play our song";
+        musicToggle.setAttribute("aria-label", "Play romantic music");
+      }
+    });
+    audio.addEventListener("ended", () => { musicLabel.textContent = "Play our song"; });
+  </script>
+</body>
+</html>
